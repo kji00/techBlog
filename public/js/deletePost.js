@@ -1,0 +1,1 @@
+// javascript front-end for deleting a post

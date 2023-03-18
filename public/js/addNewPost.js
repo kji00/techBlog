@@ -1,0 +1,1 @@
+// javascript front-end for adding a new post
