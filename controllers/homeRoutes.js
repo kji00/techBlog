@@ -28,10 +28,10 @@ router.get('/', async (req, res) => {
             ],
         });
 
-        const post = postData.map(post => post.get({ plain: true }));
+        const posts = postData.map(post => post.get({ plain: true }));
 
         res.render('homepage', {
-            post,
+            posts,
             loggedIn: req.session.loggedIn,
             username: req.session.username,
             user_id: req.session.user_id
