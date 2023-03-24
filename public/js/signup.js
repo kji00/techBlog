@@ -1,1 +1,0 @@
-// javascript front-end for signing-up a new account

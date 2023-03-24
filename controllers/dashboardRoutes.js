@@ -46,5 +46,38 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
+// Get one post to edit ('dashboard/edit/:id')
+router.get('/edit/:id', withAuth, (req, res) => {
+    try {
+        Post.findOne({
+            where: {
+                id: req.params.id,
+            },
+            attributes: ['id', 'title', 'content', 'created_at'],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment', 'postId', 'userId', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username'],
+                    },
+                },
+            ],
+        })
+
+        const post = dbPostData.get({ plain: true });
+        res.render('edit-post', { post, loggedIn: true, username: req.session.username });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }   
+});
+
 
 module.exports = router; 

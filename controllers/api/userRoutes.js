@@ -7,7 +7,6 @@ router.post('/', async (req, res) => {
         // required fields username, email and password
         const userData = await User.create({
             username: req.body.username,
-            email: req.body.email,
             password: req.body.password,
         });
 
@@ -30,7 +29,7 @@ router.post('/login', async (req, res) => {
         // find user based off of email address
         const userData = await User.findOne({
             where: {
-                email: req.body.email,
+                username: req.body.username,
             },
         });
 
