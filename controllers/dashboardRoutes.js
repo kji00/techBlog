@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
     })
         .then(postData => {
             const posts = postData.map(posts => posts.get({ plain: true }));
-            console.log('dashboardRoute\n', posts);
+            // console.log('dashboardRoute\n', posts);
             res.render('dashboard', {
                 posts,
                 loggedIn: req.session.loggedIn,
@@ -70,7 +70,7 @@ router.get('/edit/:id', (req, res) => {
     })
         .then(postData => {
             const posts = postData.get({ plain: true });
-            console.log('dashboardRoute-edit\n', posts);
+            // console.log('dashboardRoute-edit\n', posts);
             res.render('edit-post', { posts, loggedIn: true, username: req.session.username });
         })
         .catch(err => {

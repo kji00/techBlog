@@ -30,8 +30,8 @@ router.get('/', async (req, res) => {
 
         const posts = postData.map(post => post.get({ plain: true }));
 
-        console.log('homeRoutes\n',posts)
-        console.log(req.session.username)
+        // console.log('homeRoutes\n',posts)
+        // console.log(req.session.username)
 
         res.render('homepage', {
             posts,
@@ -81,7 +81,7 @@ router.get('/post/:id', async (req, res) => {
 
         const posts = postData.get({ plain: true });
 
-        console.log('homeRoutes-post\n',posts)
+        // console.log('homeRoutes-post\n',posts)
 
         res.render('single-post', {
             posts,
