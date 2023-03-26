@@ -4,11 +4,7 @@
 
 To build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
 
-# User Story
-
-AS A developer who writes about tech
-I WANT a CMS-style blog site
-SO THAT I can publish articles, blog posts, and my thoughts and opinions
+# Project Criteria
 
 GIVEN a CMS-style blog site
 
@@ -74,3 +70,8 @@ THEN I am able to view comments but I am prompted to log in again before I can a
         * sequelize
 
 2. Add .env file with DB info
+
+# Application and Repo
+
+[GithubRepo](https://github.com/kji00/techBlog)
+[HerokuApp](https://aqueous-beach-71858.herokuapp.com/)
