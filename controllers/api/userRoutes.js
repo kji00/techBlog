@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
-// signup a new user '/api/users'
+// signup a new user '/api/user'
 router.post('/', async (req, res) => {
     try {
-        // required fields username, email and password
+        // required fields username and password
         const userData = await User.create({
             username: req.body.username,
             password: req.body.password,
@@ -23,10 +23,10 @@ router.post('/', async (req, res) => {
     }
 });
 
-// login route for existing user '/api/users/login'
+// login route for existing user '/api/user/login'
 router.post('/login', async (req, res) => {
     try {
-        // find user based off of email address
+        // find user based off of username
         const userData = await User.findOne({
             where: {
                 username: req.body.username,
@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-// POST route to log out of session '/api/users/logout'
+// POST route to log out of session '/api/user/logout'
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {

@@ -1,13 +1,13 @@
 // javascript front-end for posting comments
-const post_id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
 
 async function commentFormHandler(event) {
     event.preventDefault();
 
-    const comment_text = document.querySelector('textarea[name="comment-body"]').value.trim();
+    const post_id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
+    const comment = document.querySelector('textarea[name="comment-body"]').value.trim();
 
-    if (comment_text) {
-        const response = await fetch('/api/comments', {
+    if (comment) {
+        const response = await fetch('/api/comment', {
             method: 'POST',
             body: JSON.stringify({
                 post_id,

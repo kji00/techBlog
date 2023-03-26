@@ -30,11 +30,13 @@ router.get('/', async (req, res) => {
 
         const posts = postData.map(post => post.get({ plain: true }));
 
+        console.log('homeRoutes\n',posts)
+        console.log(req.session.username)
+
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn,
             username: req.session.username,
-            user_id: req.session.user_id
         })
     } catch (err) {
         console.log(err);
@@ -70,13 +72,19 @@ router.get('/post/:id', async (req, res) => {
                         attributes: ['username'],
                     },
                 },
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
             ],
         });
 
-        const post = postData.map(post => post.get({ plain: true }));
+        const posts = postData.get({ plain: true });
+
+        console.log('homeRoutes-post\n',posts)
 
         res.render('single-post', {
-            post,
+            posts,
             loggedIn: req.session.loggedIn,
             username: req.session.username,
         })
@@ -90,7 +98,7 @@ router.get('/post/:id', async (req, res) => {
 // Login page for user
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/dashboard');
         return;
     }
     res.render('login');

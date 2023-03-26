@@ -1,13 +1,13 @@
 // javascript front-end for editing a previous post
-const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
 
 async function editFormHandler(event) {
     event.preventDefault();
 
+    const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
     const title = document.querySelector('input[name="post-title"]').value;
     const content = document.querySelector('textarea[name="post-text"]').value;
 
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/post/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             title,

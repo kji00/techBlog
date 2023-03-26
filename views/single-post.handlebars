@@ -1,4 +1,15 @@
-{{> post-info post}}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title float-left">{{posts.title}}</h5>
+        <h6 class="card-subtitle mb-2 float-right">Posted by {{posts.user.username}} on {{formatDate posts.created_at}}</h6>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{posts.content}}</p>
+    </div>
+    <div class="card-footer">
+        <a href="/post/{{id}}" class="card-link">Click for more</a>
+    </div>
+</div>
 {{#if loggedIn}}
 <form class="comment-form">
     <div>
@@ -6,7 +17,7 @@
     </div>
 
     <div>
-        <button type="submit">add comment</button>
+        <button type="submit">Submit</button>
     </div>
 </form>
 {{/if}}
